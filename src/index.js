@@ -13,12 +13,13 @@ import React from "react";
  * @returns {JSX.Element} - Returns the Gridify datagrid component.
  */
 function GridifyDatagrid({ data, columns }) {
-  // State variables for managing sorting, filtering, grouping, and aggregated data
+  // State variables for managing sorting, filtering, grouping, and hidden columns
   const [sortedData, setSortedData] = useState(data);
   const [sortConfig, setSortConfig] = useState(null);
   const [filterConfig, setFilterConfig] = useState({});
   const [groupedData, setGroupedData] = useState([]);
   const [isGrouped, setIsGrouped] = useState(false);
+  const [hiddenColumns, setHiddenColumns] = useState([]); // New state for hidden columns
 
   // Function to handle sorting based on column values
   const requestSort = (key) => {
@@ -64,11 +65,20 @@ function GridifyDatagrid({ data, columns }) {
     }
   };
 
+  // Function to handle column visibility
+  const toggleColumnVisibility = (columnId) => {
+    setHiddenColumns((prevHiddenColumns) =>
+      prevHiddenColumns.includes(columnId)
+        ? prevHiddenColumns.filter((id) => id !== columnId)
+        : [...prevHiddenColumns, columnId]
+    );
+  };
+
   // Function to aggregate grouped data (example: sum)
   const aggregateData = (groupedData) => {
     return Object.keys(groupedData).map((key) => {
       const group = groupedData[key];
-      const sum = group.reduce((acc, obj) => acc + obj["value"], 0); 
+      const sum = group.reduce((acc, obj) => acc + obj["value"], 0);
       return { group: key, sum };
     });
   };
@@ -100,33 +110,39 @@ function GridifyDatagrid({ data, columns }) {
       <table>
         <thead>
           <tr>
-            {/* Render column headers with sorting functionality */}
-            {columns.map((column) => (
-              <th key={column.id} onClick={() => requestSort(column.id)}>
-                {column.name}
-                {/* Show sorting direction indicator */}
-                {sortConfig && sortConfig.key === column.id && (
-                  <span>
-                    {sortConfig.direction === "ascending" ? "↑" : "↓"}
-                  </span>
-                )}
-              </th>
-            ))}
+            {columns.map((column) =>
+              !hiddenColumns.includes(column.id) ? (
+                <th
+                  key={column.id}
+                  onClick={() => requestSort(column.id)}
+                  style={{ cursor: "pointer" }}
+                >
+                  {column.name}
+                  {/* Show sorting direction indicator */}
+                  {sortConfig && sortConfig.key === column.id && (
+                    <span>
+                      {sortConfig.direction === "ascending" ? "↑" : "↓"}
+                    </span>
+                  )}
+                </th>
+              ) : null
+            )}
           </tr>
         </thead>
         <tbody>
           {/* Render rows based on filtered data */}
           {filteredData.map((row) => (
             <tr key={row.id}>
-              {/* Render cells based on column values */}
-              {columns.map((column) => (
-                <td key={column.id}>{row[column.id]}</td>
-              ))}
+              {/* Render cells based on visible columns */}
+              {columns
+                .filter((column) => !hiddenColumns.includes(column.id))
+                .map((column) => (
+                  <td key={column.id}>{row[column.id]}</td>
+                ))}
             </tr>
           ))}
         </tbody>
       </table>
-      {/* Render aggregated data if grouped */}
       {isGrouped && (
         <div>
           <h2>Aggregated Data</h2>
@@ -149,6 +165,22 @@ function GridifyDatagrid({ data, columns }) {
           </table>
         </div>
       )}
+      {/* Render controls to toggle column visibility */}
+      <div style={{ marginTop: "20px" }}>
+        <h3>Toggle Column Visibility</h3>
+        <div>
+          {columns.map((column) => (
+            <label key={column.id} style={{ marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={!hiddenColumns.includes(column.id)}
+                onChange={() => toggleColumnVisibility(column.id)}
+              />
+              {column.name}
+            </label>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
