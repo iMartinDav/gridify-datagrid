@@ -6,7 +6,7 @@
 ![license](https://img.shields.io/npm/l/gridify-datagrid)
 ![unpacked size](https://img.shields.io/bundlephobia/min/gridify-datagrid)
 
-Gridify Datagrid is a React component for efficiently displaying tabular data in web applications.
+Gridify Datagrid is a lightweight and versatile React component designed for efficiently displaying tabular data in web applications. It is compatible with various React frameworks and offers seamless integration.
 
 ## Installation
 
@@ -48,6 +48,10 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 Replace `data` and `columns` with your actual data and column definitions.
 
+## Compatibility and Integration
+
+Gridify is built with React and works seamlessly with all React frameworks, whether it's for client-side rendering (CSR) or server-side rendering (SSR). It can be easily integrated as a React component into projects built with popular frameworks such as Next.js, Gatsby, and Vite.
+
 ## API Reference
 
 ### Props
@@ -62,9 +66,6 @@ Replace `data` and `columns` with your actual data and column definitions.
 ## License
 
 Gridify Datagrid is licensed under the ISC License.
-
 ```
 
-Make sure to replace placeholders such as `[version]`, `[license]`, and `[unpacked size]` with actual values when you update the README.md file in your GitHub repository.
-
-Feel free to customize the README further with additional information about features, customization options, and any other relevant details about your Gridify Datagrid component.
+Feel free to further customize the README with additional information or features you think would be helpful for users of your Gridify Datagrid component.
