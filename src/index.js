@@ -12,7 +12,8 @@ import React from "react";
  * @param {Array} columns - Array of objects defining the columns of the datagrid.
  * @returns {JSX.Element} - Returns the Gridify datagrid component.
  */
-function GridifyDatagrid({ data, columns }) {
+
+function GridifyDatagrid({ data, columns, cellHeight, cellWidth }) {
   // State variables for managing sorting, filtering, grouping, and hidden columns
   const [sortedData, setSortedData] = useState(data);
   const [sortConfig, setSortConfig] = useState(null);
@@ -20,7 +21,7 @@ function GridifyDatagrid({ data, columns }) {
   const [groupedData, setGroupedData] = useState([]);
   const [isGrouped, setIsGrouped] = useState(false);
   const [hiddenColumns, setHiddenColumns] = useState([]);
-  const [aggregatedColumns, setAggregatedColumns] = useState([]); // New state for aggregated columns
+  const [aggregatedColumns, setAggregatedColumns] = useState([]);
 
   // Function to handle sorting based on column values
   const requestSort = (key) => {
@@ -120,7 +121,7 @@ function GridifyDatagrid({ data, columns }) {
   // Render the component
   return (
     <div className="gridify-datagrid">
-      <table>
+      <table style={{ width: "100%" }}>
         <thead>
           <tr>
             {/* Render column headers with sorting functionality */}
@@ -151,40 +152,20 @@ function GridifyDatagrid({ data, columns }) {
               {columns
                 .filter((column) => !hiddenColumns.includes(column.id))
                 .map((column) => (
-                  <td key={column.id}>{row[column.id]}</td>
+                  <td
+                    key={column.id}
+                    style={{
+                      height: `${cellHeight}px`, // Apply custom cell height
+                      width: `${cellWidth}px`, // Apply custom cell width
+                    }}
+                  >
+                    {row[column.id]}
+                  </td>
                 ))}
             </tr>
           ))}
         </tbody>
       </table>
-      {isGrouped && (
-        <div>
-          <h2>Aggregated Data</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Group</th>
-                {/* Render aggregated columns */}
-                {aggregatedColumns.map((columnId) => (
-                  <th key={columnId}>Sum of {columns.find((col) => col.id === columnId)?.name}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {/* Render aggregated data rows */}
-              {aggregatedData.map((item) => (
-                <tr key={item.group}>
-                  <td>{item.group}</td>
-                  {/* Render aggregated values */}
-                  {aggregatedColumns.map((columnId) => (
-                    <td key={columnId}>{item[columnId]}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      )}
       {/* Render controls to toggle column visibility */}
       <div style={{ marginTop: "20px" }}>
         <h3>Toggle Column Visibility</h3>
