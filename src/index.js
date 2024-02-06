@@ -20,7 +20,7 @@ function GridifyDatagrid({ data, columns }) {
   const [groupedData, setGroupedData] = useState([]);
   const [isGrouped, setIsGrouped] = useState(false);
 
-  // Function to handle sorting
+  // Function to handle sorting based on column values
   const requestSort = (key) => {
     let direction = "ascending";
     if (
@@ -43,12 +43,12 @@ function GridifyDatagrid({ data, columns }) {
     setSortConfig({ key, direction });
   };
 
-  // Function to handle filtering
+  // Function to handle filtering data based on specific criteria
   const requestFilter = (key, value) => {
     setFilterConfig({ ...filterConfig, [key]: value });
   };
 
-  // Function to handle grouping
+  // Function to handle grouping data based on selected column values
   const requestGroup = (key) => {
     if (key) {
       const grouped = data.reduce((acc, obj) => {
@@ -64,11 +64,11 @@ function GridifyDatagrid({ data, columns }) {
     }
   };
 
-  // Function to handle aggregation (example: sum)
+  // Function to aggregate grouped data (example: sum)
   const aggregateData = (groupedData) => {
     return Object.keys(groupedData).map((key) => {
       const group = groupedData[key];
-      const sum = group.reduce((acc, obj) => acc + obj["value"], 0); // Example: Aggregate 'value' column by sum
+      const sum = group.reduce((acc, obj) => acc + obj["value"], 0); 
       return { group: key, sum };
     });
   };
@@ -94,28 +94,17 @@ function GridifyDatagrid({ data, columns }) {
     }
   }, [groupedData, isGrouped]);
 
-  // Render data based on types
-  const renderData = (value, type) => {
-    switch (type) {
-      case "date":
-        // Custom date formatting logic
-        return new Date(value).toLocaleDateString();
-      case "number":
-        // Custom number formatting logic
-        return Number(value).toFixed(2);
-      default:
-        return value;
-    }
-  };
-
+  // Render the component
   return (
     <div className="gridify-datagrid">
       <table>
         <thead>
           <tr>
+            {/* Render column headers with sorting functionality */}
             {columns.map((column) => (
               <th key={column.id} onClick={() => requestSort(column.id)}>
                 {column.name}
+                {/* Show sorting direction indicator */}
                 {sortConfig && sortConfig.key === column.id && (
                   <span>
                     {sortConfig.direction === "ascending" ? "↑" : "↓"}
@@ -126,17 +115,18 @@ function GridifyDatagrid({ data, columns }) {
           </tr>
         </thead>
         <tbody>
+          {/* Render rows based on filtered data */}
           {filteredData.map((row) => (
             <tr key={row.id}>
+              {/* Render cells based on column values */}
               {columns.map((column) => (
-                <td key={column.id}>
-                  {renderData(row[column.id], column.type)}
-                </td>
+                <td key={column.id}>{row[column.id]}</td>
               ))}
             </tr>
           ))}
         </tbody>
       </table>
+      {/* Render aggregated data if grouped */}
       {isGrouped && (
         <div>
           <h2>Aggregated Data</h2>
@@ -148,6 +138,7 @@ function GridifyDatagrid({ data, columns }) {
               </tr>
             </thead>
             <tbody>
+              {/* Render aggregated data rows */}
               {aggregatedData.map((item) => (
                 <tr key={item.group}>
                   <td>{item.group}</td>
