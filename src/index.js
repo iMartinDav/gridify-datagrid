@@ -94,6 +94,20 @@ function GridifyDatagrid({ data, columns }) {
     }
   }, [groupedData, isGrouped]);
 
+  // Render data based on types
+  const renderData = (value, type) => {
+    switch (type) {
+      case "date":
+        // Custom date formatting logic
+        return new Date(value).toLocaleDateString();
+      case "number":
+        // Custom number formatting logic
+        return Number(value).toFixed(2);
+      default:
+        return value;
+    }
+  };
+
   return (
     <div className="gridify-datagrid">
       <table>
@@ -115,7 +129,9 @@ function GridifyDatagrid({ data, columns }) {
           {filteredData.map((row) => (
             <tr key={row.id}>
               {columns.map((column) => (
-                <td key={column.id}>{row[column.id]}</td>
+                <td key={column.id}>
+                  {renderData(row[column.id], column.type)}
+                </td>
               ))}
             </tr>
           ))}
