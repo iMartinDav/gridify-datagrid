@@ -1,14 +1,19 @@
+## Gridify Datagrid
 
-```markdown
-# Gridify Datagrid
+Gridify Datagrid is a versatile React component for efficiently displaying tabular data in web applications. It offers a range of powerful features to help you manage and visualize your data effectively.
 
-![npm version](https://img.shields.io/npm/v/gridify-datagrid)
-![license](https://img.shields.io/npm/l/gridify-datagrid)
-![unpacked size](https://img.shields.io/bundlephobia/min/gridify-datagrid)
+### Features
 
-Gridify Datagrid is a lightweight and versatile React component designed for efficiently displaying tabular data in web applications. It offers powerful features to redefine what a grid can do, including sorting, filtering, grouping, and aggregating data to provide detailed insights. Performance is guaranteed, ensuring smooth user experience even with large datasets.
+1. **Sort, Filter, and Group Data**: Easily sort, filter, and group your data to gain detailed insights.
+2. **Summarize and Aggregate Columns**: Aggregate data based on selected columns for deeper analysis.
+3. **Customize Cell Height and Width**: Customize the appearance of cells to suit your design requirements.
+4. **Hide Columns for Custom Views**: Toggle visibility of columns to create custom views.
+5. **Managed State**: Gridify manages state seamlessly, enabling smooth data management.
+6. **Zero Config**: No configuration required; all features are enabled by default.
+7. **Modern Design**: Carefully crafted for a modern and intuitive user experience.
+8. **Data Syncing**: Keep your data in sync with external sources using provided callback functions.
 
-## Installation
+### Installation
 
 You can install Gridify Datagrid via npm:
 
@@ -16,65 +21,110 @@ You can install Gridify Datagrid via npm:
 npm install gridify-datagrid
 ```
 
-## Usage
+### Usage
 
 ```jsx
 import React from 'react';
-import ReactDOM from 'react-dom';
 import GridifyDatagrid from 'gridify-datagrid';
 
-const columns = [
-  { id: 0, name: "Name" },
-  { id: 1, name: "Description" },
-];
+function MyDataGrid() {
+  // Define columns and data
+  const columns = [
+    { id: 0, name: "Name" },
+    { id: 1, name: "Description" },
+    // Add more columns as needed
+  ];
 
-const data = [
-  { id: 0, 0: "Sam Altman", 1: "CEO @ Open AI" },
-  { id: 1, 0: "Elon Musk", 2: "CEO @ Tesla" },
-  { id: 2, 0: "Jeff Bezos", 3: "Founder, Amazon" },
-];
+  const data = [
+    { id: 0, 0: "Sam Altman", 1: "CEO @ Open AI" },
+    { id: 1, 0: "Elon Musk", 1: "CEO @ Tesla" },
+    // Add more data rows as needed
+  ];
 
-function App() {
+  // Handle data syncing callback
+  const handleSyncData = (updatedData) => {
+    // Update external data source with updatedData
+  };
+
   return (
     <div>
-      <h1>Gridify Datagrid Example</h1>
-      <GridifyDatagrid data={data} columns={columns} />
+      <h1>My Data Grid</h1>
+      <GridifyDatagrid
+        initialData={data}
+        columns={columns}
+        onSyncData={handleSyncData}
+      />
     </div>
   );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export default MyDataGrid;
 ```
 
-Replace `data` and `columns` with your actual data and column definitions.
+### API Reference
 
-## Features
+#### Props
 
-### Redefines What a Grid Can Do
-Gridify redefines what a grid can do by offering powerful features to enhance data visualization and analysis:
-- **Sorting:** Click on column headers to sort data in ascending or descending order.
-- **Filtering:** Apply filters based on specific criteria to focus on relevant data subsets.
-- **Grouping:** Group similar data together based on selected column values to organize information effectively.
-- **Aggregating:** Aggregate grouped data to summarize information and gain deeper insights into trends and patterns.
-
-## Compatibility and Integration
-
-Gridify is built with React and works seamlessly with all React frameworks, whether it's for client-side rendering (CSR) or server-side rendering (SSR). It can be easily integrated as a React component into projects built with popular frameworks such as Next.js, Gatsby, and Vite.
-
-## API Reference
-
-### Props
-- `data`: An array of objects representing the rows of data to be displayed in the datagrid.
+- `initialData`: An array of objects representing the initial rows of data to be displayed in the datagrid.
 - `columns`: An array of objects defining the columns of the datagrid.
+- `onSyncData`: A callback function invoked whenever the data in the grid changes due to sorting, filtering, grouping, or aggregation.
 
-### Example
+### Examples
+
+#### Sorting Data
+
 ```jsx
-<GridifyDatagrid data={data} columns={columns} />
+<GridifyDatagrid
+  initialData={data}
+  columns={columns}
+  onSyncData={handleSyncData}
+/>
 ```
 
-## License
+#### Filtering Data
 
-Gridify Datagrid is licensed under the ISC License.
+```jsx
+<GridifyDatagrid
+  initialData={data}
+  columns={columns}
+  onSyncData={handleSyncData}
+/>
 ```
 
-This updated README.md file provides users with comprehensive information about the features and functionalities of the GridifyDatagrid component, along with instructions on how to use it and integrate it into their React projects.
+#### Grouping Data
+
+```jsx
+<GridifyDatagrid
+  initialData={data}
+  columns={columns}
+  onSyncData={handleSyncData}
+/>
+```
+
+#### Aggregating Columns
+
+```jsx
+<GridifyDatagrid
+  initialData={data}
+  columns={columns}
+  onSyncData={handleSyncData}
+/>
+```
+
+### License
+
+Gridify Datagrid is licensed under the MIT License.
+
+### Contributing
+
+Contributions are welcome! Please fork the repository and submit a pull request with your improvements.
+
+### Support
+
+If you encounter any issues or have questions, please [open an issue](https://github.com/your-repo/issues) on GitHub.
+
+### Credits
+
+Gridify Datagrid is developed and maintained by @iMartinDav. Special thanks to our contributors.
+
+That's it! You're now ready to supercharge your data app with Gridify Datagrid. Happy coding!
