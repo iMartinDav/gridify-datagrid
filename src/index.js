@@ -19,7 +19,8 @@ function GridifyDatagrid({ data, columns }) {
   const [filterConfig, setFilterConfig] = useState({});
   const [groupedData, setGroupedData] = useState([]);
   const [isGrouped, setIsGrouped] = useState(false);
-  const [hiddenColumns, setHiddenColumns] = useState([]); // New state for hidden columns
+  const [hiddenColumns, setHiddenColumns] = useState([]);
+  const [aggregatedColumns, setAggregatedColumns] = useState([]); // New state for aggregated columns
 
   // Function to handle sorting based on column values
   const requestSort = (key) => {
@@ -74,12 +75,24 @@ function GridifyDatagrid({ data, columns }) {
     );
   };
 
-  // Function to aggregate grouped data (example: sum)
+  // Function to toggle aggregation for a column
+  const toggleAggregatedColumn = (columnId) => {
+    setAggregatedColumns((prevAggregatedColumns) =>
+      prevAggregatedColumns.includes(columnId)
+        ? prevAggregatedColumns.filter((id) => id !== columnId)
+        : [...prevAggregatedColumns, columnId]
+    );
+  };
+
+  // Function to aggregate data for aggregated columns
   const aggregateData = (groupedData) => {
     return Object.keys(groupedData).map((key) => {
       const group = groupedData[key];
-      const sum = group.reduce((acc, obj) => acc + obj["value"], 0);
-      return { group: key, sum };
+      const aggregatedValues = aggregatedColumns.reduce((acc, columnId) => {
+        const columnSum = group.reduce((sum, obj) => sum + obj[columnId], 0);
+        return { ...acc, [columnId]: columnSum };
+      }, {});
+      return { group: key, ...aggregatedValues };
     });
   };
 
@@ -102,7 +115,7 @@ function GridifyDatagrid({ data, columns }) {
     } else {
       return [];
     }
-  }, [groupedData, isGrouped]);
+  }, [groupedData, isGrouped, aggregatedColumns]);
 
   // Render the component
   return (
@@ -110,6 +123,7 @@ function GridifyDatagrid({ data, columns }) {
       <table>
         <thead>
           <tr>
+            {/* Render column headers with sorting functionality */}
             {columns.map((column) =>
               !hiddenColumns.includes(column.id) ? (
                 <th
@@ -150,7 +164,10 @@ function GridifyDatagrid({ data, columns }) {
             <thead>
               <tr>
                 <th>Group</th>
-                <th>Sum</th>
+                {/* Render aggregated columns */}
+                {aggregatedColumns.map((columnId) => (
+                  <th key={columnId}>Sum of {columns.find((col) => col.id === columnId)?.name}</th>
+                ))}
               </tr>
             </thead>
             <tbody>
@@ -158,7 +175,10 @@ function GridifyDatagrid({ data, columns }) {
               {aggregatedData.map((item) => (
                 <tr key={item.group}>
                   <td>{item.group}</td>
-                  <td>{item.sum}</td>
+                  {/* Render aggregated values */}
+                  {aggregatedColumns.map((columnId) => (
+                    <td key={columnId}>{item[columnId]}</td>
+                  ))}
                 </tr>
               ))}
             </tbody>
@@ -175,6 +195,23 @@ function GridifyDatagrid({ data, columns }) {
                 type="checkbox"
                 checked={!hiddenColumns.includes(column.id)}
                 onChange={() => toggleColumnVisibility(column.id)}
+              />
+              {column.name}
+            </label>
+          ))}
+        </div>
+      </div>
+      {/* Render controls to toggle column aggregation */}
+      <div style={{ marginTop: "20px" }}>
+        <h3>Toggle Column Aggregation</h3>
+        <div>
+          {columns.map((column) => (
+            <label key={column.id} style={{ marginRight: "10px" }}>
+              <input
+                type="checkbox"
+                checked={aggregatedColumns.includes(column.id)}
+                onChange={() => toggleAggregatedColumn(column.id)}
+                disabled={!isGrouped} // Disable aggregation toggle if grouping is not enabled
               />
               {column.name}
             </label>
