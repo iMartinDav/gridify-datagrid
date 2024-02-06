@@ -13,15 +13,22 @@ import React from "react";
  * @returns {JSX.Element} - Returns the Gridify datagrid component.
  */
 
-function GridifyDatagrid({ data, columns, cellHeight = 30, cellWidth = 150 }) {
-  // State variables for managing sorting, filtering, grouping, and hidden columns
-  const [sortedData, setSortedData] = useState(data);
+function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth = 150 }) {
+  // State variables for managing data, sorting, filtering, grouping, and hidden columns
+  const [data, setData] = useState(initialData);
+  const [sortedData, setSortedData] = useState(initialData);
   const [sortConfig, setSortConfig] = useState(null);
   const [filterConfig, setFilterConfig] = useState({});
   const [groupedData, setGroupedData] = useState([]);
   const [isGrouped, setIsGrouped] = useState(false);
   const [hiddenColumns, setHiddenColumns] = useState([]);
   const [aggregatedColumns, setAggregatedColumns] = useState([]);
+
+  // useEffect hook to update data when initialData prop changes
+  useEffect(() => {
+    setData(initialData);
+    setSortedData(initialData);
+  }, [initialData]);
 
   // Function to handle sorting based on column values
   const requestSort = (key) => {
