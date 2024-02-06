@@ -14,7 +14,7 @@ import "./GridifyDatagrid.css";
  * @returns {JSX.Element} - Returns the Gridify datagrid component.
  */
 
-function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth = 150 }) {
+function GridifyDatagrid({ initialData = [], columns, onSyncData }) {
   // State variables for managing data, sorting, filtering, grouping, and hidden columns
   const [data, setData] = useState(initialData);
   const [sortedData, setSortedData] = useState(initialData);
@@ -52,11 +52,13 @@ function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth
     });
     setSortedData(sorted);
     setSortConfig({ key, direction });
+    onSyncData(sorted); // Sync sorted data with external source
   };
 
   // Function to handle filtering data based on specific criteria
   const requestFilter = (key, value) => {
     setFilterConfig({ ...filterConfig, [key]: value });
+    onSyncData(filteredData); // Sync filtered data with external source
   };
 
   // Function to handle grouping data based on selected column values
@@ -73,6 +75,7 @@ function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth
       setGroupedData([]);
       setIsGrouped(false);
     }
+    onSyncData(groupedData); // Sync grouped data with external source
   };
 
   // Function to handle column visibility
@@ -91,6 +94,7 @@ function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth
         ? prevAggregatedColumns.filter((id) => id !== columnId)
         : [...prevAggregatedColumns, columnId]
     );
+    onSyncData(aggregatedData); // Sync aggregated data with external source
   };
 
   // Function to aggregate data for aggregated columns
@@ -129,6 +133,7 @@ function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth
   // Render the component
   return (
     <div className="gridify-datagrid-container">
+      {/* Render the grid table */}
       <table className="gridify-datagrid-table">
         <thead>
           <tr>
@@ -163,10 +168,6 @@ function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth
                   <td
                     key={column.id}
                     className="gridify-datagrid-cell"
-                    style={{
-                      height: `${cellHeight}px`, // Apply custom cell height
-                      width: `${cellWidth}px`, // Apply custom cell width
-                    }}
                   >
                     {row[column.id]}
                   </td>
