@@ -121,7 +121,7 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 ### Support
 
-If you encounter any issues or have questions, please [open an issue](https://github.com/your-repo/issues) on GitHub.
+If you encounter any issues or have questions, please [open an issue](https://github.com/iMartinDav/gridify-datagrid/issues) on GitHub.
 
 ### Credits
 
