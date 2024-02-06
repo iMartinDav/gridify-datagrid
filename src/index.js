@@ -13,7 +13,7 @@ import React from "react";
  * @returns {JSX.Element} - Returns the Gridify datagrid component.
  */
 
-function GridifyDatagrid({ data, columns, cellHeight, cellWidth }) {
+function GridifyDatagrid({ data, columns, cellHeight = 30, cellWidth = 150 }) {
   // State variables for managing sorting, filtering, grouping, and hidden columns
   const [sortedData, setSortedData] = useState(data);
   const [sortConfig, setSortConfig] = useState(null);
