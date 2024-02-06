@@ -1,5 +1,6 @@
 // src/index.js
 import React from "react";
+import "./GridifyDatagrid.css";
 
 /**
  * Gridify Datagrid Component
@@ -127,8 +128,8 @@ function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth
 
   // Render the component
   return (
-    <div className="gridify-datagrid">
-      <table style={{ width: "100%" }}>
+    <div className="gridify-datagrid-container">
+      <table className="gridify-datagrid-table">
         <thead>
           <tr>
             {/* Render column headers with sorting functionality */}
@@ -137,7 +138,7 @@ function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth
                 <th
                   key={column.id}
                   onClick={() => requestSort(column.id)}
-                  style={{ cursor: "pointer" }}
+                  className="gridify-datagrid-header"
                 >
                   {column.name}
                   {/* Show sorting direction indicator */}
@@ -161,6 +162,7 @@ function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth
                 .map((column) => (
                   <td
                     key={column.id}
+                    className="gridify-datagrid-cell"
                     style={{
                       height: `${cellHeight}px`, // Apply custom cell height
                       width: `${cellWidth}px`, // Apply custom cell width
@@ -174,15 +176,16 @@ function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth
         </tbody>
       </table>
       {/* Render controls to toggle column visibility */}
-      <div style={{ marginTop: "20px" }}>
+      <div className="gridify-datagrid-controls">
         <h3>Toggle Column Visibility</h3>
-        <div>
+        <div className="gridify-datagrid-checkboxes">
           {columns.map((column) => (
-            <label key={column.id} style={{ marginRight: "10px" }}>
+            <label key={column.id} className="gridify-datagrid-checkbox-label">
               <input
                 type="checkbox"
                 checked={!hiddenColumns.includes(column.id)}
                 onChange={() => toggleColumnVisibility(column.id)}
+                className="gridify-datagrid-checkbox"
               />
               {column.name}
             </label>
@@ -190,16 +193,17 @@ function GridifyDatagrid({ initialData = [], columns, cellHeight = 30, cellWidth
         </div>
       </div>
       {/* Render controls to toggle column aggregation */}
-      <div style={{ marginTop: "20px" }}>
+      <div className="gridify-datagrid-controls">
         <h3>Toggle Column Aggregation</h3>
-        <div>
+        <div className="gridify-datagrid-checkboxes">
           {columns.map((column) => (
-            <label key={column.id} style={{ marginRight: "10px" }}>
+            <label key={column.id} className="gridify-datagrid-checkbox-label">
               <input
                 type="checkbox"
                 checked={aggregatedColumns.includes(column.id)}
                 onChange={() => toggleAggregatedColumn(column.id)}
                 disabled={!isGrouped} // Disable aggregation toggle if grouping is not enabled
+                className="gridify-datagrid-checkbox"
               />
               {column.name}
             </label>

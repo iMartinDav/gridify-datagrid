@@ -1,0 +1,42 @@
+/* GridifyDatagrid.css */
+
+.gridify-datagrid-container {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.gridify-datagrid-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.gridify-datagrid-header {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 8px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.gridify-datagrid-header:hover {
+    background-color: #ddd;
+}
+
+.gridify-datagrid-cell {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.gridify-datagrid-controls {
+    margin-top: 20px;
+}
+
+.gridify-datagrid-checkbox-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.gridify-datagrid-checkbox {
+    margin-right: 5px;
+}
