@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="w-full h-20 flex items-center justify-between bg-transparent text-white px-8">
       <div className="flex items-center">
         <p className="text-sm">
-          © {currentYear} Gridify Datagrid. All rights reserved. Developed by Your Company.
+          © {currentYear} Gridify. All rights reserved to GPT 4. Developed by iMartinDav whit 💚.
         </p>
       </div>
       <div className="flex items-center">
