@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 export default function Home() {
   return (
@@ -12,7 +12,9 @@ export default function Home() {
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Gridify Datagrid
           React database component à la Notion, Airtable, etc.
-          Gridify Datagrid is a versatile React component for efficiently displaying tabular data in web applications. It offers a range of powerful features to help you manage and visualize your data effectively.
+          Gridify Datagrid is a versatile React component for efficiently displaying
+          tabular data in web applications. It offers a range of powerful features 
+          to help you manage and visualize your data effectively.
         </p>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
           <a
