@@ -54,3 +54,39 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Use media queries for ultra-wide high resolution screens */
+@media (min-width: 1920px) and (min-resolution: 300dpi) {
+  body {
+    /* Increase background size for ultra-wide high resolution screens */
+    background-size: 800% 800%;
+    /* Increase animation duration for ultra-wide high resolution screens */
+    animation: gradient 60s ease infinite;
+  }
+}
+
+/* Use media queries for small phones */
+@media (max-width: 480px) {
+  body {
+    /* Reduce font size for small phones */
+    font-size: 0.8rem;
+  }
+}
+
+/* Use media queries for large screens */
+@media (min-width: 1200px) {
+  body {
+    /* Increase font size for large screens */
+    font-size: 1.2rem;
+  }
+}
+
+/* Use media queries for ultra-wide high resolution screens */
+@media (min-width: 1920px) and (min-resolution: 300dpi) {
+  body {
+    /* Increase background size for ultra-wide high resolution screens */
+    background-size: 800% 800%;
+    /* Increase animation duration for ultra-wide high resolution screens */
+    animation: gradient 60s ease infinite;
+  }
+}
