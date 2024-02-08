@@ -4,29 +4,49 @@
 
 /* Define your light theme colors */
 :root {
-  --color-bg-start: 214, 219, 220; /* start background color */
-  --color-bg-end: 255, 255, 255; /* end background color */
-  --color-text: 0, 0, 0; /* text color */
-  /* Add transition for smooth color change */
-  transition: background 0.5s linear, color 0.5s linear;
+  --color-bg-start: 255, 255, 255; /* start background color */
+  --color-bg-step1: 253, 248, 255;
+  --color-bg-step2: 251, 241, 255;
+  --color-bg-step3: 249, 234, 255;
+  --color-bg-step4: 247, 227, 255;
+  --color-bg-end: 245, 220, 255; /* end background color (light purple) */
+  --color-text: 15, 0, 15; /* text color */
 }
 
 /* Define your dark theme colors */
 [data-theme="dark"] {
-  --color-bg-start: 0, 0, 0; /* start background color */
-  --color-bg-end: 0, 0, 0; /* end background color */
-  --color-text: 255, 255, 255; /* text color */
+  --color-bg-start: 0, 0, 0;
+  --color-bg-step1: 5, 0, 5;
+  --color-bg-step2: 10, 0, 10;
+  --color-bg-step3: 15, 0, 15;
+  --color-bg-step4: 20, 0, 20;
+  --color-bg-end: 25, 0, 25;
+  --color-text: 247, 227, 255; /* white text color */
 }
 
 body {
   /* Use CSS variables for colors */
   color: rgb(var(--color-text));
   background: linear-gradient(
-      to bottom,
-      transparent,
+      -45deg,
+      rgb(var(--color-bg-start)),
+      rgb(var(--color-bg-step1)),
+      rgb(var(--color-bg-step2)),
+      rgb(var(--color-bg-step3)),
+      rgb(var(--color-bg-step4)),
       rgb(var(--color-bg-end))
-    )
-    rgb(var(--color-bg-start));
+    );
+  background-size: 400% 400%;
+  /* Add -webkit-fill-available for full height on mobile Safari */
+  min-height: -webkit-fill-available;
+  /* Add animation */
+  animation: gradient 30s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @layer utilities {
