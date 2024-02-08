@@ -2,28 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Define your light theme colors */
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-bg-start: 214, 219, 220; /* start background color */
+  --color-bg-end: 255, 255, 255; /* end background color */
+  --color-text: 0, 0, 0; /* text color */
+  /* Add transition for smooth color change */
+  transition: background 0.5s linear, color 0.5s linear;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+/* Define your dark theme colors */
+[data-theme="dark"] {
+  --color-bg-start: 0, 0, 0; /* start background color */
+  --color-bg-end: 0, 0, 0; /* end background color */
+  --color-text: 255, 255, 255; /* text color */
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* Use CSS variables for colors */
+  color: rgb(var(--color-text));
   background: linear-gradient(
       to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
+      rgb(var(--color-bg-end))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--color-bg-start));
 }
 
 @layer utilities {
