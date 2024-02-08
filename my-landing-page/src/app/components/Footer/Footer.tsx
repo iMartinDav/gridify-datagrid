@@ -6,13 +6,13 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full h-20 flex items-center justify-between bg-transparent text-white px-8">
-      <div className="flex items-center">
-        <p className="text-sm">
-          © {currentYear} Gridify. All rights reserved to GPT 4. Developed by iMartinDav whit 💚.
+    <footer className="w-full h-20 flex flex-col md:flex-row items-center justify-between bg-transparent px-8 py-4">
+      <div className="flex items-center justify-center md:justify-start">
+        <p className="text-center md:text-left text-sm">
+          © {currentYear} Gridify. All rights reserved to GPT 4. Developed by iMartinDav with 💚.
         </p>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center justify-center md:justify-end mt-4 md:mt-0">
         <a
           href="YOUR_DISCORD_LINK"
           target="_blank"
