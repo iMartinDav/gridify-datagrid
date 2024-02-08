@@ -9,8 +9,8 @@ function Navigator() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-transparent px-4 py-5 shadow-md">
-      <div className="container flex flex-wrap items-center justify-between mx-auto">
+    <nav className="bg-transparent px-4 py-5 shadow-xl rounded-xl">
+      <div className="container flex flex-wrap items-center justify-between mx-auto rounded-lg">
 
         <button
           type="button"
@@ -22,95 +22,95 @@ function Navigator() {
         </button>
 
         <Dialog as="div" open={mobileMenuOpen} onClose={setMobileMenuOpen}>
-        <Dialog.Panel
-            className="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden"
-        >
-            <div className="flex items-center justify-between">
-              <button
-                type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="sr-only">Close menu</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
-            </div>
+          <Dialog.Panel
+              className="fixed inset-0 z-10 overflow-y-auto bg-white px-6 py-6 lg:hidden rounded-lg"
+          >
+              <div className="flex items-center justify-between rounded-lg">
+                <button
+                  type="button"
+                  className="-m-2.5 rounded-md p-2.5 text-gray-700"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <span className="sr-only">Close menu</span>
+                  <XMarkIcon className="h-6 w-6" aria-hidden="true" />
+                </button>
+              </div>
 
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-gray-500/10">
-                <div className="space-y-2 py-6">
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg py-2 px-3 text-base font-medium leading-7 text-gray-900 hover:bg-gray-400/10"
-                  >
-                    Features
-                  </a>
+              <div className="mt-6 flow-root rounded-lg">
+                <div className="-my-6 divide-y divide-gray-500/10 rounded-lg">
+                  <div className="space-y-2 py-6 rounded-xl">
+                    <a
+                      href="#"
+                      className="-mx-3 block rounded-lg py-2 px-3 text-base font-medium leading-7 text-gray-900 hover:bg-gray-400/10"
+                    >
+                      Features
+                    </a>
 
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg py-2 px-3 text-base font-medium leading-7 text-gray-900 hover:bg-gray-400/10"
-                  >
-                    Installation
-                  </a>
+                    <a
+                      href="#"
+                      className="-mx-3 block rounded-lg py-2 px-3 text-base font-medium leading-7 text-gray-900 hover:bg-gray-400/10"
+                    >
+                      Installation
+                    </a>
 
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg py-2 px-3 text-base font-medium leading-7 text-gray-900 hover:bg-gray-400/10"
-                  >
-                    Usage
-                  </a>
+                    <a
+                      href="#"
+                      className="-mx-3 block rounded-lg py-2 px-3 text-base font-medium leading-7 text-gray-900 hover:bg-gray-400/10"
+                    >
+                      Usage
+                    </a>
 
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg py-2 px-3 text-base font-medium leading-7 text-gray-900 hover:bg-gray-400/10"
-                  >
-                    License
-                  </a>
+                    <a
+                      href="#"
+                      className="-mx-3 block rounded-lg py-2 px-3 text-base font-medium leading-7 text-gray-900 hover:bg-gray-400/10"
+                    >
+                      License
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Dialog.Panel>
-        </Dialog>
+            </Dialog.Panel>
+          </Dialog>
 
-        <div className="hidden w-full md:block md:w-auto">
-          <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0">
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-              >
-                Features
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-              >
-                Installation
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-              >
-                Usage
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
-              >
-                License
-              </a>
-            </li>
-          </ul>
+          <div className="hidden w-full md:block md:w-auto rounded-lg">
+            <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 rounded-lg">
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 pl-3 pr-4 text-gray-700 rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >
+                  Features
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 pl-3 pr-4 text-gray-700 rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >
+                  Installation
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 pl-3 pr-4 text-gray-700 rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >
+                  Usage
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  className="block py-2 pl-3 pr-4 text-gray-700 rounded-lg hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                >
+                  License
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
   );
-}
+};
 
 export default Navigator;

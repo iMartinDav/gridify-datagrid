@@ -1,6 +1,5 @@
 // components/Logo.tsx
 "use client" // This makes the component a Client Component
-// components/Logo.tsx
 import React from "react";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
@@ -18,12 +17,12 @@ const Logo: React.FC = () => {
       <Image
         src="/logo.png"
         alt="Logo"
-        width={120}
-        height={40}
+        width={isMobile ? 80 : 120}
+        height={isMobile ? 27 : 40}
         quality={100}
         priority
         sizes={imageSizes}
-        className="rounded-full" // Apply rounded corners
+        className="rounded-full object-contain" // Apply rounded corners and contain the image within its box
       />
     </header>
   );

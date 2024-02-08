@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Define your light theme colors */
+/* Light theme colors */
 :root {
   --color-bg-start: 255, 255, 255; /* start background color */
   --color-bg-step1: 253, 248, 255;
@@ -13,7 +13,7 @@
   --color-text: 15, 0, 15; /* text color */
 }
 
-/* Define your dark theme colors */
+/* Dark theme colors */
 [data-theme="dark"] {
   --color-bg-start: 0, 0, 0;
   --color-bg-step1: 5, 0, 5;
