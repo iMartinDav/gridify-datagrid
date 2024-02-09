@@ -80,14 +80,14 @@ const DarkLightModeSwitch: React.FC = () => {
           }
           role="switch"
           aria-checked={isDarkMode}
-          className={`w-8 sm:w-10 md:w-12 lg:w-13 xl:w-14 2xl:w-14 h-5 sm:h-6 md:h-7 lg:h-7 xl:h-8 2xl:h-8 rounded-full flex items-center transition duration-300 focus:outline-none shadow-lg hover:bg-gray-200 active:bg-gray-300 ${
+          className={`w-8 sm:w-10 md:w-12 lg:w-13 xl:w-14 2xl:w-16 h-5 sm:h-6 md:h-7 lg:h-7 xl:h-8 2xl:h-8 rounded-full flex items-center transition duration-300 focus:outline-none shadow-lg hover:bg-gray-200 active:bg-gray-300 ${
             isDarkMode ? "bg-indigo-950" : "bg-white"
           }`}
           onClick={toggleDarkMode}
         >
           <div
             id="switch-toggle"
-            className={`w-5 sm:w-6 md:w-7 lg:w-8 xl:w-9 2xl:w-9 h-5 sm:h-6 md:h-7 lg:h-7 xl:h-8 2xl:h-8 relative rounded-full transition duration-500 transform p-1 text-yellow-200 shadow-lg ${
+            className={`w-6 sm:w-6 md:w-7 lg:w-8 xl:w-9 2xl:w-9.5 h-5 sm:h-6 md:h-7 lg:h-7 xl:h-8 2xl:h-8 relative rounded-full transition duration-500 transform p-1 text-yellow-200 shadow-lg ${
               isDarkMode
                 ? "bg-violet-950 translate-x-full"
                 : "bg-violet-300 -translate-x-2"
