@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import Hero from "./components/Hero/Hero";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Header />
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="max-w-5xl w-full text-center sm:text-left">
+        <Hero />
           <p className="border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit sm:static sm:w-auto sm:rounded-xl sm:border sm:bg-gray-200 sm:p-4 sm:dark:bg-zinc-800/30">
             Gridify Datagrid React database component à la Notion, Airtable,
             etc. Gridify Datagrid is a versatile React component for efficiently
