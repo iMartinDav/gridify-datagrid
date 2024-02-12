@@ -1,16 +1,27 @@
 {
   "name": "gridify-datagrid",
   "version": "2.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Description of your package",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "lint": "eslint src/**/*.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": "@iMartinDav",
   "license": "ISC",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@types/react": "^18.2.55",
+    "typescript": "^5.3.3",
+    "eslint": "^8.2.0",
+    "eslint-plugin-react": "^7.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0"
   }
 }
