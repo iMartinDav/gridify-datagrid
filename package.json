@@ -3,6 +3,7 @@
   "version": "2.0.1",
   "description": "Description of your package",
   "main": "dist/index.js",
+  "types": "src/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
@@ -23,5 +24,10 @@
     "eslint-plugin-react": "^7.28.0",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0"
-  }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ]
 }

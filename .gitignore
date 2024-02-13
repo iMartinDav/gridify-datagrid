@@ -1,0 +1,126 @@
+# General
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.hmap
+*.ipa
+*.xcuserstate
+*.xcworkspace/
+*.xcodeproj/
+!*.xcodeproj/project.pbxproj
+
+# CocoaPods
+Pods/
+Podfile.lock
+
+# Carthage
+Carthage/Build/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Visual Studio Code
+.vscode/
+
+# Node.js
+node_modules/
+
+# TypeScript
+*.js
+*.map
+
+# macOS folder attributes
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Dependency directories
+/node_modules
+/bower_components
+
+# Distribution directories
+/dist
+/build
+/out
+
+# IDE and editor files
+/.idea
+/.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs and debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs
+*.log
+npm-debug.log.*
+yarn-debug.log.*
+yarn-error.log.*
+
+# Build and package files
+*.log
+*.tar.gz
+*.tgz
+*.zip
+*.rar
+*.gz
+*.exe
+*.msi
+*.7z
+*.dmg
+*.iso
+
+# Editor-specific files
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Temporary files
+*.swp
+*~
+
+# Configuration files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore all .env files except .env.example
+.env*
+
+# System Files
+.DS_Store
+Thumbs.db
