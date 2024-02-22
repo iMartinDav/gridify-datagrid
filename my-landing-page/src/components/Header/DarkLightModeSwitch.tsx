@@ -64,7 +64,7 @@ const DarkModeContext = createContext<DarkModeContextValue | undefined>(undefine
 // Provider component to wrap the app with the context
 export const DarkModeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isDarkMode, toggleDarkMode] = useDarkMode();
-  
+
   // Provide dark mode and toggle function to children
   return (
     <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
@@ -94,9 +94,7 @@ const DarkLightModeSwitch: React.FC = () => {
     <div className="flex justify-end px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6 2xl:px-8 py-1 sm:py-2 md:py-3 lg:py-4 xl:py-5 2xl:py-6">
       <div className="dark-light-mode-switch">
         <button
-          aria-label={
-            isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'
-          }
+          aria-label={isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           role="switch"
           aria-checked={isDarkMode}
           className={`w-8 sm:w-10 md:w-12 lg:w-13 xl:w-14 2xl:w-16 h-5 sm:h-6 md:h-7 lg:h-7 xl:h-8 2xl:h-8 rounded-full flex items-center transition duration-300 focus:outline-none shadow-lg hover:bg-gray-200 active:bg-gray-300 ${
@@ -107,9 +105,7 @@ const DarkLightModeSwitch: React.FC = () => {
           <div
             id="switch-toggle"
             className={`w-6 sm:w-6 md:w-7 lg:w-8 xl:w-9 2xl:w-9.5 h-5 sm:h-6 md:h-7 lg:h-7 xl:h-8 2xl:h-8 relative rounded-full transition duration-500 transform p-1 text-yellow-200 shadow-lg ${
-              isDarkMode
-                ? 'bg-violet-950 translate-x-full'
-                : 'bg-violet-300 -translate-x-2'
+              isDarkMode ? 'bg-violet-950 translate-x-full' : 'bg-violet-300 -translate-x-2'
             }`}
           >
             <svg

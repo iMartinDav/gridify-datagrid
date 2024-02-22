@@ -5,12 +5,7 @@
       "dependsOn": ["install", "lint"],
       "env": ["NODE_ENV=production"],
       "inputs": ["src/**/*", "!node_modules/**"],
-      "outputs": [
-        ".next/**",
-        "public/**",
-        "!node_modules/**",
-        "!**/*.+(ts|tsx)"
-      ],
+      "outputs": [".next/**", "public/**", "!node_modules/**", "!**/*.+(ts|tsx)"],
       "cache": true,
       "persistent": false
     },

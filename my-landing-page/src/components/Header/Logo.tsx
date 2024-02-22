@@ -8,9 +8,7 @@ const Logo: React.FC = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   // Define image sizes for different screen widths
-  const imageSizes = isMobile
-    ? '(max-width: 640px) 80px, 120px'
-    : '120px';
+  const imageSizes = isMobile ? '(max-width: 640px) 80px, 120px' : '120px';
 
   return (
     <header className="logo">

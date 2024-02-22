@@ -14,7 +14,7 @@
 }
 
 /* Dark theme colors */
-[data-theme="dark"] {
+[data-theme='dark'] {
   --color-bg-start: 0, 0, 0;
   --color-bg-step1: 5, 0, 5;
   --color-bg-step2: 10, 0, 10;
@@ -28,14 +28,14 @@ body {
   /* Use CSS variables for colors */
   color: rgb(var(--color-text));
   background: linear-gradient(
-      -45deg,
-      rgb(var(--color-bg-start)),
-      rgb(var(--color-bg-step1)),
-      rgb(var(--color-bg-step2)),
-      rgb(var(--color-bg-step3)),
-      rgb(var(--color-bg-step4)),
-      rgb(var(--color-bg-end))
-    );
+    -45deg,
+    rgb(var(--color-bg-start)),
+    rgb(var(--color-bg-step1)),
+    rgb(var(--color-bg-step2)),
+    rgb(var(--color-bg-step3)),
+    rgb(var(--color-bg-step4)),
+    rgb(var(--color-bg-end))
+  );
   background-size: 400% 400%;
   /* Add -webkit-fill-available for full height on mobile Safari */
   min-height: -webkit-fill-available;
@@ -44,9 +44,15 @@ body {
 }
 
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 @layer utilities {

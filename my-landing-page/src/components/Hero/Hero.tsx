@@ -30,8 +30,7 @@ const Hero: FC = () => (
           <span className="block xl:inline">Supercharge your data app</span>
         </h1>
         <p className="mt-2 max-w-md mx-auto text-sm text-gray-300 sm:text-base md:mt-4 md:text-lg lg:text-xl md:max-w-3xl">
-          Gridify is the datagrid component that helps you build your app
-          faster and ship sooner.
+          Gridify is the datagrid component that helps you build your app faster and ship sooner.
         </p>
         <div className="mt-4 max-w-md mx-auto sm:flex sm:justify-center md:mt-6 lg:mt-8">
           <Button href="/get-started" label="Get started →" />
