@@ -3,14 +3,7 @@
 import React, { useState } from 'react';
 import GridifyDatagrid from 'gridify-datagrid';
 import { sampleData } from './data';
-import { Column as ImportedColumn, DataItem, Column } from './types';
-
-interface MyDataGridDemo {
-  initialData?: DataItem[];
-  columns: Column[];
-  onSyncData: (data: DataItem[]) => void;
-  enableSorting?: boolean;
-}
+import { Column, DataItem } from './types';
 
 const MyDataGridDemo: React.FC = () => {
   const [data, setData] = useState(sampleData);
