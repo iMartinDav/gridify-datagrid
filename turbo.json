@@ -2,30 +2,32 @@
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
     "build": {
-      "dependsOn": ["install", "lint"],
-      "env": ["NODE_ENV=production"],
-      "inputs": ["src/**/*", "!node_modules/**"],
-      "outputs": [".next/**", "public/**", "!node_modules/**", "!**/*.+(ts|tsx)"],
-      "cache": true,
-      "persistent": false
+      "dependsOn": ["^build", "check-types"],
+      "outputs": [
+        ".next/**",
+        "!.next/cache/**",
+        "public/**",
+        "!node_modules/**",
+        "!**/*.+(ts|tsx)"
+      ],
+      "cache": true
     },
-    "lint": {
-      "inputs": ["src/**/*.+(js|jsx|ts|tsx)", "!node_modules/**"],
-      "outputs": [],
-      "cache": true,
-      "persistent": false
+
+    "deploy": {
+      "dependsOn": ["build", "test", "lint"]
     },
     "test": {
-      "dependsOn": ["lint"],
-      "outputs": [],
-      "cache": true,
-      "persistent": false
+      "dependsOn": ["build"],
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
     },
-    "type-check": {
-      "inputs": ["src/**/*.+(ts|tsx)", "!node_modules/**"],
-      "outputs": [],
-      "cache": true,
-      "persistent": false
-    }
+
+    "lint": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+
+    "check-types": {},
+    "preview": { "dependsOn": ["build"] }
   }
 }
