@@ -1,9 +1,10 @@
 // components/Navigator.tsx
-"use client"; // This makes the component a Client Component
-import { useState } from "react";
+'use client'; // This makes the component a Client Component
+import { useState } from 'react';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore // Add this comment to disable the TypeScript error
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Dialog } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 function Navigator() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

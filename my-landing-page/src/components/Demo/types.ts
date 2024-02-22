@@ -10,7 +10,7 @@ export interface DataItem {
     salary: number;
   }
 
-  export interface Column {
+export interface Column {
     header: string;
     key: keyof DataItem;
   }

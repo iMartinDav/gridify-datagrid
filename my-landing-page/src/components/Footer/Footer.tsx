@@ -1,5 +1,5 @@
-import React from "react";
-import { FaDiscord } from "react-icons/fa";
+import React from 'react';
+import { FaDiscord } from 'react-icons/fa';
 
 const Footer = () => {
   // Get the current year
