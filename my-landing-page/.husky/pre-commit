@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Include Husky script
+. "$(dirname "$0")/_/husky.sh"
+
+# Echo a message indicating the actions being performed
+echo '🚀👨🏻‍💻🎉 Initiating the styling, testing, and building of your project before committing...👨🏻‍💻🎉'
+
+# Check Prettier standards
+npm run check-format || {
+    echo '🎨🚫 Prettier Check Failed! 😱💔
+            Your code styling does not meet the standards. Please run `npm run format`, add the changes, and let\'s try that commit again, shall we?'
+    false
+}
+
+# Check ESLint Standards
+npm run check-lint || {
+    echo '🔎🚨 Oh no, ESLint found some issues!😰💥
+                Let\'s fix these reported issues, add the changes, and try that commit again.'
+    false
+}
+
+# Check tsconfig standards
+npm run check-types || {
+    echo '🤖❌ Oops! Type check failed!
+            Let\'s fix the type errors reported above and try again.😓💡'
+    false
+}
+
+# If everything passes, try to build
+echo '👌🏻🔨 Code looks good! Initiating build...🤔💪🏻'
+
+npm run build || {
+    echo '🏗️😞 Build failed! 😭💔
+            Let\'s check the errors above and fix those build issues, shall we?'
+    false
+}
+
+# If everything passes, commit
+echo '✅🎉 Everything looks fantastic! You are all set to commit!🥳🎈💚'
