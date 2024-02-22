@@ -1,16 +1,16 @@
 // components/Logo.tsx
-"use client" // This makes the component a Client Component
-import React from "react";
-import Image from "next/image";
-import { useMediaQuery } from "react-responsive";
+'use client';
+import React from 'react';
+import Image from 'next/image';
+import { useMediaQuery } from 'react-responsive';
 
 const Logo: React.FC = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   // Define image sizes for different screen widths
   const imageSizes = isMobile
-    ? "(max-width: 640px) 80px, 120px"
-    : "120px";
+    ? '(max-width: 640px) 80px, 120px'
+    : '120px';
 
   return (
     <header className="logo">
