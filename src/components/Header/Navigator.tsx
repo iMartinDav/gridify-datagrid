@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 // components/Navigator.tsx
 'use client'; // This makes the component a Client Component
 import { useState } from 'react';

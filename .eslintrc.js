@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
@@ -6,9 +7,8 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
-    },
-    project: ['./tsconfig.json', './gridify-landing/tsconfig.json'], // Include both tsconfig files
-  },
+    }, // Closing the ecmaFeatures object with a comma
+  }, // Closing the parserOptions object with a comma
   plugins: ['@typescript-eslint', 'react', 'react-hooks'],
   extends: [
     'eslint:recommended',
@@ -16,7 +16,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
     'prettier',
-  ],
+  ], // Terminating the extends array with a comma
   settings: {
     react: {
       version: 'detect',
