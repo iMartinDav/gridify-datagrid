@@ -1,6 +1,6 @@
 // src/index.tsx
-import React, { useState, useEffect, useMemo } from "react";
-import "./GridifyDatagrid.css";
+import React, { useState, useEffect, useMemo } from 'react';
+import './GridifyDatagrid.css';
 
 interface Column {
   id: string;
@@ -9,11 +9,11 @@ interface Column {
 
 interface GridifyDatagridProps {
   /** Array of initial data to be displayed in the datagrid */
-  initialData?: any[];
+  initialData?: unknown[];
   /** Array of objects defining the columns of the datagrid */
   columns: Column[];
   /** Callback function to sync data with an external source */
-  onSyncData: (data: any[]) => void;
+  onSyncData: (data: unknown[]) => void;
 }
 
 /**
@@ -49,19 +49,22 @@ const GridifyDatagrid: React.FC<GridifyDatagridProps> = ({
 
   // Function to handle sorting based on column values
   const requestSort = (key: string) => {
-    let direction = "ascending";
-    if (sortConfig && sortConfig.key === key && sortConfig.direction === "ascending") {
-      direction = "descending";
+    let direction = 'ascending';
+    if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
+      direction = 'descending';
     }
-    const sorted = [...data].sort((a, b) => {
-      if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+    const sorted = [...data].sort((a: unknown, b: unknown) => {
+      if (
+        !Object.prototype.hasOwnProperty.call(a, key) ||
+        !Object.prototype.hasOwnProperty.call(b, key)
+      ) {
         return 0;
       }
-      if (a[key] < b[key]) {
-        return direction === "ascending" ? -1 : 1;
+      if ((a as any)[key] < (b as any)[key]) {
+        return direction === 'ascending' ? -1 : 1;
       }
-      if (a[key] > b[key]) {
-        return direction === "ascending" ? 1 : -1;
+      if ((a as any)[key] > (b as any)[key]) {
+        return direction === 'ascending' ? 1 : -1;
       }
       return 0;
     });
@@ -76,9 +79,9 @@ const GridifyDatagrid: React.FC<GridifyDatagridProps> = ({
   };
 
   // Function to handle grouping data based on selected column values
-  const requestGroup = (key: string) => {
-    if (key) {
-      const grouped = data.reduce((acc: any, obj: any) => {
+  const requestGroup = (key: string, data: { [key: string]: any }[]) => {
+    if (key && Array.isArray(data)) {
+      const grouped: { [key: string]: any[] } = data.reduce((acc: any, obj: any) => {
         const groupKey = obj[key];
         acc[groupKey] = [...(acc[groupKey] || []), obj];
         return acc;
@@ -110,6 +113,7 @@ const GridifyDatagrid: React.FC<GridifyDatagridProps> = ({
   };
 
   // Function to aggregate data for aggregated columns
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const aggregateData = useMemo(() => {
     return Object.keys(groupedData).map((key) => {
       const group = groupedData[key];
@@ -123,7 +127,8 @@ const GridifyDatagrid: React.FC<GridifyDatagridProps> = ({
 
   // Memoize sorted and filtered data
   const filteredData = useMemo(() => {
-    return sortedData.filter((row) => {
+    return sortedData.filter((row: any) => {
+      // Add type annotation for 'row'
       for (const key in filterConfig) {
         if (row[key] !== filterConfig[key]) {
           return false;
@@ -148,7 +153,7 @@ const GridifyDatagrid: React.FC<GridifyDatagridProps> = ({
                 >
                   {column.name}
                   {sortConfig && sortConfig.key === column.id && (
-                    <span>{sortConfig.direction === "ascending" ? "↑" : "↓"}</span>
+                    <span>{sortConfig.direction === 'ascending' ? '↑' : '↓'}</span>
                   )}
                 </th>
               ) : null
@@ -156,7 +161,7 @@ const GridifyDatagrid: React.FC<GridifyDatagridProps> = ({
           </tr>
         </thead>
         <tbody>
-          {filteredData.map((row, rowIndex) => (
+          {filteredData.map((row: any, rowIndex: number) => (
             <tr key={rowIndex}>
               {columns
                 .filter((column) => !hiddenColumns.includes(column.id))

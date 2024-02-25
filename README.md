@@ -30,14 +30,14 @@ import GridifyDatagrid from 'gridify-datagrid';
 function MyDataGrid() {
   // Define columns and data
   const columns = [
-    { id: 0, name: "Name" },
-    { id: 1, name: "Description" },
+    { id: 0, name: 'Name' },
+    { id: 1, name: 'Description' },
     // Add more columns as needed
   ];
 
   const data = [
-    { id: 0, 0: "Sam Altman", 1: "CEO @ Open AI" },
-    { id: 1, 0: "Elon Musk", 1: "CEO @ Tesla" },
+    { id: 0, 0: 'Sam Altman', 1: 'CEO @ Open AI' },
+    { id: 1, 0: 'Elon Musk', 1: 'CEO @ Tesla' },
     // Add more data rows as needed
   ];
 
@@ -49,11 +49,7 @@ function MyDataGrid() {
   return (
     <div>
       <h1>My Data Grid</h1>
-      <GridifyDatagrid
-        initialData={data}
-        columns={columns}
-        onSyncData={handleSyncData}
-      />
+      <GridifyDatagrid initialData={data} columns={columns} onSyncData={handleSyncData} />
     </div>
   );
 }
@@ -74,41 +70,25 @@ export default MyDataGrid;
 #### Sorting Data
 
 ```jsx
-<GridifyDatagrid
-  initialData={data}
-  columns={columns}
-  onSyncData={handleSyncData}
-/>
+<GridifyDatagrid initialData={data} columns={columns} onSyncData={handleSyncData} />
 ```
 
 #### Filtering Data
 
 ```jsx
-<GridifyDatagrid
-  initialData={data}
-  columns={columns}
-  onSyncData={handleSyncData}
-/>
+<GridifyDatagrid initialData={data} columns={columns} onSyncData={handleSyncData} />
 ```
 
 #### Grouping Data
 
 ```jsx
-<GridifyDatagrid
-  initialData={data}
-  columns={columns}
-  onSyncData={handleSyncData}
-/>
+<GridifyDatagrid initialData={data} columns={columns} onSyncData={handleSyncData} />
 ```
 
 #### Aggregating Columns
 
 ```jsx
-<GridifyDatagrid
-  initialData={data}
-  columns={columns}
-  onSyncData={handleSyncData}
-/>
+<GridifyDatagrid initialData={data} columns={columns} onSyncData={handleSyncData} />
 ```
 
 ### License

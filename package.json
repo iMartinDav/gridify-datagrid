@@ -7,28 +7,36 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
-    "lint": "eslint src/**/*.ts"
+    "type-check": "tsc --noEmit",
+    "check-types": "tsc --pretty --noEmit",
+    "check-format": "prettier --check .",
+    "check-lint": "eslint . --ext ts --ext tsx --ext js",
+    "format": "prettier --write .",
+    "test-all": "npm run check-format && npm run check-lint && npm run check-types && npm run build",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "@iMartinDav",
   "license": "ISC",
   "dependencies": {
+    "eslint-plugin-nestjs": "^1.2.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "type-check": "^0.4.0"
   },
   "devDependencies": {
-    "@types/node": "^20.11.17",
-    "@types/react": "^18.2.55",
+    "@types/node": "^20.11.20",
+    "@types/react": "^18.2.57",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
-    "eslint": "^8.2.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.0",
+    "prettier": "^3.2.5",
     "typescript": "^5.3.3",
     "vite": "^5.1.4"
   },
-  "files": [
-    "dist",
-    "src",
-    "README.md"
-  ]
+  "files": ["dist", "src", "README.md"]
 }
